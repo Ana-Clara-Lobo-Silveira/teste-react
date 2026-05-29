@@ -1,6 +1,13 @@
-function Card(){
+import styles from "./card.module.css"
+
+function Card(imagem, nome='Nome', curso='Nenhum'){
     return(
         <>
+        <div className={styles.card}>
+            <img src={imagem}/>
+            <h2>{nome}</h2>
+            <p>Curso: {curso} </p>
+        </div>
         </>
     )
 }
