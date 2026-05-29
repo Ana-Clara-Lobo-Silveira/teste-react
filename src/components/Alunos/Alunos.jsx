@@ -1,3 +1,5 @@
+import styles from "./alunos.module.css"
+
 function Alunos(){
     return(
         <>
