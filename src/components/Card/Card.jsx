@@ -1,6 +1,6 @@
 import styles from "./card.module.css"
 
-function Card(imagem, nome='Nome', curso='Nenhum'){
+function Card(imagem='https://placehold.co/400', nome='Nome', curso='Nenhum'){
     return(
         <>
         <div className={styles.card}>

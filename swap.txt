@@ -1,0 +1,20 @@
+  const objeto = 
+    {
+      id: 1, 
+      nome:'João'
+    };
+
+    const styles = 
+    {
+      containerFrutas: 'classe-azul',
+      'container-legumes': 'classe-verde'
+    };
+
+
+      <p>{objeto.nome}</p> 
+      <p>{objeto['nome']}</p>
+      <p>{styles.containerFrutas}</p>
+      <p>{styles['container-legumes']}</p> 
+
+            <MsgUsuario nomeUsuario = {'Senai'}/>
+      <MsgUsuario autenticado ={true} nomeUsuario = {'Senai'}/>
