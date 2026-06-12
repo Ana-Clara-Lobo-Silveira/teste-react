@@ -11,10 +11,17 @@ function Contador(){
     // }
     return(
         <>
-        <p className={styles.p}>0</p>
-        <button className={styles.button}>Aumentar</button>
-        <button className={styles.button}>Diminuir</button>
-        <button className={styles.button}>Reiniciar</button>
+        <section className={styles.body}>
+            <p className={styles.p}>00</p>
+            <div className={styles.buttons}>
+                <button className={styles.button}>Reiniciar</button>            
+                <button className={styles.button}>+</button>
+                <button className={styles.button}>-</button>
+                <button className={styles.button}>Sortear</button>
+            </div>
+
+        </section>
+
         </>
     )
 }
