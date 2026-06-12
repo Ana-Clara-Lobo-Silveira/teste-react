@@ -13,13 +13,25 @@ function Contador(){
         setContador(0);
     }
     const sortearContador = () =>{
-        setContador(Math.floor(Math.random()*(100)))
+        setContador(Math.floor(Math.random()*(100)+1));
+    }
+
+    const obterClasse = () => {
+        if (contador>0) return styles.valorP
+        if (contador<0) return styles.valorN
+        return styles.p
+    }
+    const formatarContador = () =>{
+        if (contador >= 0 && contador < 10){
+            return `0${contador}`;
+        }
+        return contador;
     }
 
     return(
         <>
         <section className={styles.body}>
-            <p className={styles.p}>{contador}</p>
+            <p className={obterClasse()}>{formatarContador()}</p>
             <div className={styles.buttons}>
                 <button className={styles.button} onClick={reiniciarContador}>Reiniciar</button>            
                 <button className={styles.button} onClick={atualizarContadorP}>+</button>

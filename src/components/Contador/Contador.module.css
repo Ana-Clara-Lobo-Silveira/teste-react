@@ -14,8 +14,18 @@
 
 }
 .p{
+    color: blue;
     font-size: 150px;
 }
+.valorP{
+    color: rgb(21, 255, 0);
+    font-size: 150px;
+}
+.valorN{
+    color: rgb(255, 0, 0);
+    font-size: 150px;
+}
+
 .button{
     margin: 25px 10px;
     padding: 8px;
