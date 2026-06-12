@@ -12,6 +12,9 @@ function Contador(){
     const reiniciarContador = () =>{
         setContador(0);
     }
+    const sortearContador = () =>{
+        setContador(Math.floor(Math.random()*(100)))
+    }
 
     return(
         <>
@@ -21,7 +24,7 @@ function Contador(){
                 <button className={styles.button} onClick={reiniciarContador}>Reiniciar</button>            
                 <button className={styles.button} onClick={atualizarContadorP}>+</button>
                 <button className={styles.button} onClick={atualizarContadorN}>-</button>
-                <button className={styles.button}>Sortear</button>
+                <button className={styles.button} onClick={sortearContador}>Sortear</button>
             </div>
 
         </section>
