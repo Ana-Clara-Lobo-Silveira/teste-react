@@ -13,6 +13,13 @@ function UseEffectHook(){
     useEffect(()=>{
         console.log('Ocorre quando renderizar a primeira vez.')
     }, [])
+    useEffect(()=>{
+        console.log('Ocorre quando renderizar o contador.')
+    }, [contador])
+
+    useEffect(()=>{
+        document.title = titulo + contador
+    })
     return(
         <>
         <button className={styles.button} onClick={()=> setContador(contador+1)}>{contador}</button>
