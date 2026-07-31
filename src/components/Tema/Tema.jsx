@@ -30,10 +30,28 @@ function Tema(){
 
     return(
         <main className={`${styles.container} ${temaEscuro ? styles.temaEscuro : styles.temaClaro}`}>
-            
-            <section></section>
-            <section></section>
-            <section></section>
+            <h1 className={styles.titulo}>Exemplos de useState e useEffect</h1>
+            <section className={styles.card}>
+                <h2 >1. Contador (useState)</h2>
+                <p className={styles.valor}>{contador}</p>
+                <div className={styles.botoes}>
+                <button className={styles.botaoTema} onClick={aumentarContador}>+</button>
+                <button className={styles.botaoTema}  onClick={diminuirContador}>-</button>
+                </div>
+                <p>O useEffect observa a variável <strong>contador</strong> e executa sempre que ele muda.</p>
+            </section>
+
+            <section className={styles.card}>
+                <h2>2. Campo de texto (useState)</h2>
+                <input className={styles.input} type="text" placeholder="Digite seu nome" value={nome} onChange={(digitado)=>setNome(digitado.target.value)} />
+                <p>Olá, <strong>{nome || 'visitante'}</strong>!</p>
+            </section>
+
+            <section className={styles.card}>
+                <h2>3. Alternância de tema (useState)</h2>
+                <button className={styles.botaoTema} onClick={alternarTema}>Alternar tema para tema {temaEscuro ? 'Claro' : 'Escuro'}</button>
+                <p>O useEffect observa a variável <strong>temaEscuro</strong> e executa sempre que o tema é alterado.</p>
+            </section>
         </main>
     );
 }
