@@ -1,38 +1,93 @@
 import { useEffect, useState } from "react";
 import styles from './ConsultaApi.module.css'
+import Swal from 'sweetalert2'
 
+// or via CommonJS
 function ConsultaApi(){
     const [usuarios, setUsuarios] = useState([])
     const [loading, setLoading] = useState(false)
     const [erro, setErro] = useState(" ")
+    const AlertSucesso = () => {
+        Swal.fire({
+            title: "Os dados foram exibidos com Sucesso!",
+            icon: "success",
+            draggable: true
+    })};
+
+    const ErroURL = () =>{
+        Swal.fire({
+        icon: "error",
+        title: "Erro",
+        text: "URL inválida! Verifique o endereço novamente."
+        });
+    };
+    const autenticacao = () => {
+        Swal.fire({
+            title: 'Erro 401!',
+            text: 'Usuário não autorizado.',
+            icon: 'error',
+            confirmButtonText: 'Cool'
+        });
+    };
+    const erroInterno = () => {
+        Swal.fire({
+            title: 'Erro!',
+            text: 'O servidor está apresentando um problema interno',
+            icon: 'error',
+            confirmButtonText: 'continuar'
+        });
+    };
+
+    const internet = () => {
+        Swal.fire({
+            title: "Erro de internet",
+            text: "Não foi possivel conectar a servidor. Verifique sua internet.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Tentar novamente"
+        }).then((result) => {
+            if (result.isConfirmed) (
+                window.location.reload()
+            );
+        });
+
+    }
+
     async function BuscarUsuarios(){
     setLoading(true)
     setErro("")
+
     try {
+        
+        // const respostaFetch = await fetch("https://httpbin.org/status/500");
+        
         const respostaFetch = await fetch("https://jsonplaceholder.typicode.com/users");
         console.log(respostaFetch)
 
         if (!respostaFetch.ok){
-            if (respostaFetch.status === 500){
-                throw new Error("Erro 500: Falha no banco de dados ou servidor.")
-            }
-            if (respostaFetch.status === 401){
-                throw new Error("Erro 401: Usuário não autorizado.")
-            }
-            throw new Error(`Erro ${respostaFetch.status}: URL não encontrada ou inválida.`)
+            if (respostaFetch.status === 500) {
+                    throw new Error(erroInterno());
+                }
+            if (respostaFetch.status === 401) {
+                    throw new Error(autenticacao());
+                }
+            throw new Error(ErroURL())
         }
 
         const dados = await respostaFetch.json();
         console.log(dados)
+
         setUsuarios(dados)
+        AlertSucesso()
 
 
     } catch (error) {
         console.log(error.message)
         if (error.message === "Failed to fetch" || !navigator.onLine){
-            setErro("Não é possível conectar ao servidor. Verifique a sua internet.")
-        } else{
-            setErro(error.message)
+            internet()
+
         }
     } finally {
         setLoading(false)
