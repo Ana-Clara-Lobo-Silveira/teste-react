@@ -20,7 +20,7 @@ function App() {
       {/* <Tema/>  */}
       {/* <ConsultaApi/> */}
       {<Consulta/>}
-      {<Produto/>}
+      {<Produto produto="camera"/>}
     </>
 
 
